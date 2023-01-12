@@ -1,6 +1,10 @@
 var player,
     time_update_interval = 0;
 
+
+
+
+
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('video-placeholder', {
         width: 600,
@@ -35,6 +39,7 @@ function initialize(){
 }
 
 
+
 // This function is called by initialize()
 function updateTimerDisplay(){
     // Update current time text display.
@@ -44,18 +49,29 @@ function updateTimerDisplay(){
 
 
 
-
-
-
-
-//$('.sentence').on('mouseup touchend', function (e) {
 $('body').on('click', '[id^="sentence"]', function() {
     let t =$(this).val();
-    player.seekTo(t);
+    let dur = $(this).attr("data-duration");
+    let playback = $('#playback').val();
+    if (playback == "continuous"){
+        player.playVideo();
+        player.seekTo(t);
+    }
+    else{
+        player.playVideo();
+        player.seekTo(t);
+        setTimeout(function(){
+        player.pauseVideo();
+        }, (dur*1000)); // I can add 1500 to counter delay in loading videos
+    }
 });
 
 
-$('#speed').on('change', function () {
+
+
+
+
+$('body').on('change','[id^="speed"]', function () {
     let rate=$(this).val();
     if (rate == 0.25)
     {
@@ -76,7 +92,8 @@ $('#speed').on('change', function () {
     else if (rate == 2) {
        player.setPlaybackRate(2);
     }
-
+    // change all speed selects to the user modification
+    $('[id^="speed"]').val(rate)
        //console.log(rate);
 });
 
@@ -120,7 +137,8 @@ $('pre code').each(function(i, block) {
 });
 
 $('body').on('click', '[id^="sentence"]', function() {
-   $(this).addClass("animatedIn").delay(5000).queue(function(){
+    let dur = $(this).attr("data-duration");
+   $(this).addClass("animatedIn").delay(dur*1000).queue(function(){
       $(this).removeClass("animatedIn").dequeue();
   });
 });

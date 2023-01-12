@@ -15,7 +15,8 @@
 <body>
 
 <div class="header">
-  <h1>Learn With Youtube</h1>
+  <h1 id="title">Learn With YouTube</h1>
+
 </div>
 
 
@@ -24,13 +25,17 @@
     <div class="card">
         <form id="upload-list" method="post" enctype="multipart/form-data">
           <h2>Enter a list of Youtube songs/videos that have English captions:</h2>
-          <textarea id="vlist" name="vlist" rows="5" cols="33">https://www.youtube.com/watch?v=Qpk4bJOls0g https://www.youtube.com/watch?v=FWT9FJ7aQq4</textarea>
-          <button type="submit" class="btn btn-default">Process</button>
+          <textarea id="vlist" name="vlist" rows="5" cols="33">https://www.youtube.com/watch?v=f-Wypwi9UBc
+https://www.youtube.com/watch?v=7n4Tmri5cbU</textarea>
+
+            <button type="submit" class="btn">Process</button>
         </form>
     <img src="{{ url_for('static', filename='img/loading.gif') }}" id="loading-image" style="display:none;">
+
     </div>
 
     <div class="card" id="list_wrapper" style="display: none;">
+
         <div id="video_list">
 
         </div>
@@ -38,32 +43,39 @@
 
     <div class="card" id="results" style="display: none;">
         <div id="video-placeholder" style="display: none;"></div>
-<div id="leid">
-    <ul>
-    </ul>
-
-</div>
+<div id="leid" style="display: block;"><ul id="oVPD5eFihKw" class="texts" style="display: block;">
+</ul></div>
     </div>
 
   </div>
   <div class="rightcolumn">
-      <div class="card">
-
-          <h3>Change the speed:</h3>
-            <select id="speed">
-                <option>0.25</option>
-                <option>0.5</option>
-                <option selected="selected">1</option>
-                <option>1.5</option>
-                <option>2</option>
+      <div class="card" style="text-align:center;">
+            <h3>Desired language:</h3>
+            <select id="lang" style="margin-top:10px;">
+                <option selected="selected">en</option>
+                <option>de</option>
             </select>
+
+          <h3>Playpback:</h3>
+            <select id="playback" style="margin-top:10px;">
+                <option selected="selected">continuous</option>
+                <option>one line</option>
+            </select>
+
+
+          <h3  style="margin-top:10px;">Method:</h3>
+            <select id="method" style="margin-top:10px;">
+                <option selected="selected">TTR</option>
+                <option>MTLD</option>
+            </select>
+
        </div>
     <div class="card">
       <h2>About</h2>
-      <p>This application uses lexical diversity to sort your chosen youtube videos and helps you follow along with your video and repeat sentences as many times as you want.</p>
+      <p style="font-size:20px;">This application uses lexical diversity to sort your chosen YouTube videos by difficulty.</p>
     </div>
-    <div class="card">
-      <a href="https://github.com/mourhafkz">@Mourhaf Kazzaz</a>
+    <div class="card" style="text-align: right;">
+      <a style="font-size:20px;" href="https://github.com/mourhafkz">@Mourhaf Kazzaz</a>
     </div>
   </div>
 </div>
@@ -76,8 +88,8 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
 <script src="https://www.youtube.com/iframe_api"></script>
-  <script src="{{ url_for('static', filename='js/form.js') }}"></script>
-  <script id="reload" src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <script id="reload1" src="{{ url_for('static', filename='js/form.js') }}"></script>
+  <script id="reload2" src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 
 </body>
